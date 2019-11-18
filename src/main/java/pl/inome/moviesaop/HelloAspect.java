@@ -1,5 +1,6 @@
 package pl.inome.moviesaop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -9,8 +10,9 @@ import org.springframework.stereotype.Component;
 class HelloAspect {
 
     @Around("execution(String pl.inome.moviesaop.Hello.sayHello())")
-    private void aroundHello() {
+    private void aroundHello(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Around Hello");
+        joinPoint.proceed();
     }
 
 //    @Before("execution(String pl.inome.moviesaop.Hello.sayHello())")
