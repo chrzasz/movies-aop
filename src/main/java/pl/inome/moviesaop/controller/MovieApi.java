@@ -1,10 +1,12 @@
-package pl.inome.moviesaop.movie;
+package pl.inome.moviesaop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.inome.moviesaop.email.EmailSend;
+import pl.inome.moviesaop.model.Movie;
+import pl.inome.moviesaop.service.MovieService;
 
 @RestController
 @RequestMapping(value = "/api/movies")

@@ -1,4 +1,4 @@
-package pl.inome.moviesaop.movie;
+package pl.inome.moviesaop.model;
 
 public class Movie {
 

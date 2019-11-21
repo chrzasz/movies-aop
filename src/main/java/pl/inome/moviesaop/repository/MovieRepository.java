@@ -1,16 +1,17 @@
-package pl.inome.moviesaop.movie;
+package pl.inome.moviesaop.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
+import pl.inome.moviesaop.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class MovieService {
+@Repository
+public class MovieRepository {
 
     private List<Movie> movies;
 
-    public MovieService() {
+    public MovieRepository() {
         this.movies = new ArrayList<>();
         this.movies.add(new Movie("Seksmisja", 1983, "Poland"));
         this.movies.add(new Movie("Dzień Swira", 2002, "Poland"));
@@ -23,13 +24,8 @@ public class MovieService {
         return movies;
     }
 
-    public boolean addMovie(Movie movie) {
-        if (movie.getTitle() != null
-                && movie.getProductionYear() != null
-                && movie.getProducer() != null) {
-            this.movies.add(movie);
-            return true;
-        }
-        return false;
+    public void addMovie(Movie movie) {
+        this.movies.add(movie);
     }
+
 }
