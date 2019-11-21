@@ -1,4 +1,4 @@
-package pl.inome.moviesaop;
+package pl.inome.moviesaop.hello;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -11,18 +11,18 @@ import org.springframework.stereotype.Component;
 @Component
 class HelloAspect {
 
-    @Around("@annotation(HelloAnnotation)")
+    @Around("@annotation(pl.inome.moviesaop.hello.HelloAnnotation)")
     private void aroundHello(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Around Hello");
         joinPoint.proceed();
     }
 
-    @Before("@annotation(HelloAnnotation)")
+    @Before("@annotation(pl.inome.moviesaop.hello.HelloAnnotation)")
     private void beforeHello() {
         System.out.println("Before Hello");
     }
 
-    @After("@annotation(HelloAnnotation)")
+    @After("@annotation(pl.inome.moviesaop.hello.HelloAnnotation)")
     private void afterHello() {
         System.out.println("After Hello");
     }

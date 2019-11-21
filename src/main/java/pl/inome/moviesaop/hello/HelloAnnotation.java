@@ -1,4 +1,4 @@
-package pl.inome.moviesaop;
+package pl.inome.moviesaop.hello;
 
 public @interface HelloAnnotation {
 }
