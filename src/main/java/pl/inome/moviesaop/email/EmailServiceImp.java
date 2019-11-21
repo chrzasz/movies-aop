@@ -28,7 +28,6 @@ class EmailServiceImp implements EmailService {
             msg.setText(movieService.getMovies().get(idx - 1).toString());
             try {
                 emailSender.send(msg);
-                System.out.println("email send");
             } catch (Exception e) {
                 e.printStackTrace();
             }

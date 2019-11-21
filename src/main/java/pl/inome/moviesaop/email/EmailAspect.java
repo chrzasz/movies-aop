@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 class EmailAspect {
 
-    EmailService emailService;
+    private EmailService emailService;
 
     @Autowired
     public EmailAspect(EmailService emailService) {
