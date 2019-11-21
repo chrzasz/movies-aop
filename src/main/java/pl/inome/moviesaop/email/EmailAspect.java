@@ -27,18 +27,20 @@ class EmailAspect {
 
     @After(value = "@annotation(EmailSend)")
     private void sendEmail() {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("emailt407@gmail.com");
-        msg.setSubject("New movie added");
-        int idx = movieService.getMovies().size();
-        msg.setText(movieService.getMovies().get(idx - 1).toString());
-        try {
-            emailSender.send(msg);
-            System.out.println("email send");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Thread thread = new Thread(() -> {
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setTo("emailt407@gmail.com");
+            msg.setSubject("New movie added");
+            int idx = movieService.getMovies().size();
+            msg.setText(movieService.getMovies().get(idx - 1).toString());
+            try {
+                emailSender.send(msg);
+                System.out.println("email send");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
 
     }
 
