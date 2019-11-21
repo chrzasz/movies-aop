@@ -12,6 +12,6 @@ Adding new film:
 
 sends email with movie details
 
-![image](https://user-images.githubusercontent.com/28804847/69339027-c0417680-0c64-11ea-957d-b7342594423d.png)
+![image](https://user-images.githubusercontent.com/28804847/69339723-45795b00-0c66-11ea-83ba-1a8fdbb96854.png)
 
 
