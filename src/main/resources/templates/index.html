@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Movies</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-row">
+        <div class="col-md-12">
+            <form th:action="@{/addMovie}" th:object="${newMovie}" method="post">
+                <p>Name: <input type="text" th:field="*{title}"></p>
+                <p>Year: <input type="text" th:field="*{productionYear}"></p>
+                <p>Producer: <input type="text" th:field="*{producer}"></p>
+                <p><input type="submit" value="Add Movie"></p>
+            </form>
+            <h3>Movies List</h3>
+            <tr th:each="movie: ${movies}">
+                ---------------------------------------------<br>
+                <td th:text="${movie.getTitle()}"></td>
+                <br>
+                <td th:text="${movie.getProductionYear()}"></td>
+                <br>
+                <td th:text="${movie.getProducer()}"></td>
+                <br>
+            </tr>
+        </div>
+    </div>
+</div>
+</body>
+</html>

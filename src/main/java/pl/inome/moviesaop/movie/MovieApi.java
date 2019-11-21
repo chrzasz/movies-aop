@@ -1,10 +1,10 @@
 package pl.inome.moviesaop.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.inome.moviesaop.email.EmailSend;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/movies")
@@ -18,15 +18,18 @@ class MovieApi {
     }
 
     @GetMapping
-    public List<Movie> getMovies() {
-        return movieService.getMovies();
+    public ResponseEntity<Iterable<Movie>> getMovies() {
+        if (movieService.getMovies().iterator().hasNext())
+            return new ResponseEntity<>(movieService.getMovies(), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping
     @EmailSend
-    public String addMovie(@RequestBody Movie movie) {
-        movieService.addMovie(movie);
-        return "added: " + movie;
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+        return (movieService.addMovie(movie))
+                ? new ResponseEntity<>(HttpStatus.CREATED)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 }

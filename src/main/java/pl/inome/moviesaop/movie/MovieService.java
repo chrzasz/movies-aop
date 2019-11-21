@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-class MovieService {
+public class MovieService {
 
     private List<Movie> movies;
 
@@ -23,11 +23,13 @@ class MovieService {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
-
-    public void addMovie(Movie movie) {
-        this.movies.add(movie);
+    public boolean addMovie(Movie movie) {
+        if (movie.getTitle() != null
+                && movie.getProductionYear() != null
+                && movie.getProducer() != null) {
+            this.movies.add(movie);
+            return true;
+        }
+        return false;
     }
 }

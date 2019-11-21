@@ -1,6 +1,6 @@
 package pl.inome.moviesaop.movie;
 
-class Movie {
+public class Movie {
 
     private String title;
     private Integer productionYear;
